@@ -396,6 +396,9 @@ elif pagina == "Comparativo Anual de Mapas":
 elif pagina == "Previsão de Risco de Fogo":
     st.title("🤖 Previsão de Risco de Fogo")
 
+    # A remoção do 'pydeck' significa que você não precisa mais do 'import pydeck as pdk'
+    # no topo do seu arquivo, caso esta seja a única página que o utiliza.
+
     if modelo is not None:
         with st.form("formulario_previsao"):
             st.markdown("##### Preencha os dados para a simulação:")
@@ -409,7 +412,7 @@ elif pagina == "Previsão de Risco de Fogo":
                 # Lógica para gerar as opções de satélite dinamicamente
                 colunas_satelite_modelo = [c for c in colunas_do_modelo if c.startswith("satelite_")]
                 opcoes_satelite = [c.replace("satelite_", "") for c in colunas_satelite_modelo]
-                if "AQUA_M" not in opcoes_satelite: # Adiciona o satélite removido pelo drop_first=True
+                if "AQUA_M" not in opcoes_satelite:
                     opcoes_satelite.insert(0, "AQUA_M")
                 satelite = st.selectbox("Satélite", sorted(opcoes_satelite))
 
@@ -420,16 +423,14 @@ elif pagina == "Previsão de Risco de Fogo":
                 # Lógica para gerar as opções de bioma dinamicamente
                 colunas_bioma_modelo = [c for c in colunas_do_modelo if c.startswith("bioma_")]
                 opcoes_bioma = [c.replace("bioma_", "") for c in colunas_bioma_modelo]
-                if "Amazônia" not in opcoes_bioma: # Adiciona o bioma removido pelo drop_first=True
+                if "Amazônia" not in opcoes_bioma:
                     opcoes_bioma.insert(0, "Amazônia")
                 bioma = st.selectbox("Bioma", sorted(opcoes_bioma))
 
             submit = st.form_submit_button("🔮 Realizar Previsão")
 
-        # --- LÓGICA DE PREVISÃO E EXIBIÇÃO DOS RESULTADOS ---
-        # Esta parte agora fica fora do "with st.form(...)" para que os resultados persistam
         if submit:
-            # Prepara o DataFrame para o modelo
+            # (A lógica de preparação do input_df e da previsão continua a mesma)
             input_df = pd.DataFrame(0, index=[0], columns=colunas_do_modelo)
             input_df['dias_sem_chuva'] = dias_sem_chuva
             input_df['precipitacao'] = precipitacao
@@ -443,67 +444,38 @@ elif pagina == "Previsão de Risco de Fogo":
 
             previsao = modelo.predict(input_df)[0]
 
-            # --- EXIBIÇÃO DOS RESULTADOS (TEXTO E MAPA) ---
+            # --- EXIBIÇÃO DOS RESULTADOS ---
             st.markdown("---")
             st.subheader("Resultado da Previsão:")
             
-            # Layout com duas colunas para o resultado e o mapa
-            col_resultado, col_mapa = st.columns([1, 2]) # Resultado ocupa 1/3, mapa 2/3
+            col_resultado, col_mapa = st.columns([1, 2])
 
             with col_resultado:
-                # Mostra o resultado com a cor apropriada
-                if previsao >= 0.75:
-                    st.error(f"🔥 Risco MUITO ALTO")
-                elif previsao >= 0.5:
-                    st.warning(f"⚠️ Risco MODERADO")
-                else:
-                    st.success(f"✅ Risco BAIXO")
-                
-                st.markdown(f"Risco de fogo: {previsao:.2%}")
+                def get_cor_risco(risco):
+                    if risco >= 0.75: return '#dc3545'
+                    elif risco >= 0.5: return '#ffc107'
+                    else: return '#28a745'
+                cor_valor = get_cor_risco(previsao)
+                st.markdown(f"""
+                <div style="border: 1px solid #2e2e2e; border-radius: 5px; padding: 10px; text-align: center;">
+                    <p style="font-size: 16px; color: #aaa; margin-bottom: -5px;">Valor Previsto</p>
+                    <p style="font-size: 32px; font-weight: bold; color: {cor_valor};">{previsao:.2%}</p>
+                </div>
+                """, unsafe_allow_html=True)
                 st.progress(previsao)
 
             with col_mapa:
-                # --- NOVO: Função para criar a cor do marcador ---
-                def calcular_cor_risco(risco):
-                    """Cria um gradiente de verde para vermelho baseado no risco (0 a 1)."""
-                    # Interpolação linear: R = 255 * risco, G = 255 * (1 - risco)
-                    red = int(255 * risco)
-                    green = int(255 * (1 - risco))
-                    return [red, green, 0]
-
-                cor_marcador = calcular_cor_risco(previsao)
-
-                # --- NOVO: Criação do Mapa com o Ponto da Previsão ---
-                df_ponto_mapa = pd.DataFrame({
+                # --- NOVO MAPA SIMPLIFICADO ---
+                st.subheader("📍 Localização da Previsão")
+                
+                # 1. Cria um DataFrame simples com as colunas 'latitude' e 'longitude'
+                map_data = pd.DataFrame({
                     'latitude': [latitude],
-                    'longitude': [longitude],
-                    'cor': [cor_marcador],
-                    'risco_texto': [f"Risco: {previsao:.2%}"]
+                    'longitude': [longitude]
                 })
-
-                layer = pdk.Layer(
-                    "ScatterplotLayer",
-                    data=df_ponto_mapa,
-                    get_position='[longitude, latitude]',
-                    get_fill_color="cor", # Usa a cor que calculamos
-                    get_radius=20000,     # Raio do marcador em metros
-                    pickable=True,
-                    opacity=0.8
-                )
-
-                # Centraliza o mapa na coordenada prevista
-                view_state = pdk.ViewState(
-                    latitude=latitude,
-                    longitude=longitude,
-                    zoom=6,
-                    pitch=0
-                )
-
-                tooltip = {"text": "{risco_texto}"}
-
-                r = pdk.Deck(layers=[layer], initial_view_state=view_state, tooltip=tooltip, map_style='mapbox://styles/mapbox/satellite-streets-v11')
-                st.pydeck_chart(r)
-
+                
+                # 2. Chama st.map com os dados
+                st.map(map_data, zoom=6)
 # --- NOVA PÁGINA DE CONCLUSÕES ---
 elif pagina == "Conclusões":
     st.title("💡 Conclusões e Insights Principais")
