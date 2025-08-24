@@ -1,0 +1,8 @@
+streamlit
+pandas
+scikit-learn
+joblib
+plotly
+pydeck
+geopy
+reverse_geocoder

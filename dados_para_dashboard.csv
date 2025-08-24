@@ -1,0 +1,157 @@
+ano,mes,bioma,contagem_focos
+2023,1,Amazônia,14305
+2023,1,Caatinga,9601
+2023,1,Cerrado,8242
+2023,1,Mata Atlântica,5830
+2023,1,Pampa,2086
+2023,1,Pantanal,915
+2023,2,Amazônia,6441
+2023,2,Caatinga,5604
+2023,2,Cerrado,10553
+2023,2,Mata Atlântica,6021
+2023,2,Pampa,1993
+2023,2,Pantanal,136
+2023,3,Amazônia,16242
+2023,3,Caatinga,4037
+2023,3,Cerrado,8772
+2023,3,Mata Atlântica,8002
+2023,3,Pampa,1401
+2023,3,Pantanal,304
+2023,4,Amazônia,11146
+2023,4,Caatinga,3650
+2023,4,Cerrado,13625
+2023,4,Mata Atlântica,6386
+2023,4,Pampa,1164
+2023,4,Pantanal,210
+2023,5,Amazônia,37371
+2023,5,Caatinga,2845
+2023,5,Cerrado,56840
+2023,5,Mata Atlântica,8989
+2023,5,Pampa,641
+2023,5,Pantanal,791
+2023,6,Amazônia,89995
+2023,6,Caatinga,5337
+2023,6,Cerrado,99091
+2023,6,Mata Atlântica,8874
+2023,6,Pampa,499
+2023,6,Pantanal,2231
+2023,7,Amazônia,129335
+2023,7,Caatinga,10709
+2023,7,Cerrado,150399
+2023,7,Mata Atlântica,13125
+2023,7,Pampa,418
+2023,7,Pantanal,4355
+2023,8,Amazônia,448677
+2023,8,Caatinga,23510
+2023,8,Cerrado,203239
+2023,8,Mata Atlântica,30117
+2023,8,Pampa,1429
+2023,8,Pantanal,2583
+2023,9,Amazônia,589612
+2023,9,Caatinga,82174
+2023,9,Cerrado,363604
+2023,9,Mata Atlântica,25516
+2023,9,Pampa,138
+2023,9,Pantanal,11482
+2023,10,Amazônia,542167
+2023,10,Caatinga,139196
+2023,10,Cerrado,288405
+2023,10,Mata Atlântica,21126
+2023,10,Pampa,499
+2023,10,Pantanal,48998
+2023,11,Amazônia,388135
+2023,11,Caatinga,70748
+2023,11,Cerrado,123246
+2023,11,Mata Atlântica,32847
+2023,11,Pampa,197
+2023,11,Pantanal,213576
+2023,12,Amazônia,84833
+2023,12,Caatinga,43974
+2023,12,Cerrado,59889
+2023,12,Mata Atlântica,23202
+2023,12,Pampa,169
+2023,12,Pantanal,44384
+2024,1,Amazônia,61127
+2024,1,Caatinga,20811
+2024,1,Cerrado,22166
+2024,1,Mata Atlântica,13692
+2024,1,Pampa,241
+2024,1,Pantanal,34547
+2024,2,Amazônia,119335
+2024,2,Caatinga,5670
+2024,2,Cerrado,11536
+2024,2,Mata Atlântica,7977
+2024,2,Pampa,510
+2024,2,Pantanal,11829
+2024,3,Amazônia,82520
+2024,3,Caatinga,5171
+2024,3,Cerrado,13977
+2024,3,Mata Atlântica,9377
+2024,3,Pampa,393
+2024,3,Pantanal,7435
+2024,4,Amazônia,18909
+2024,4,Caatinga,2295
+2024,4,Cerrado,14230
+2024,4,Mata Atlântica,8203
+2024,4,Pampa,309
+2024,4,Pantanal,5877
+2024,5,Amazônia,44387
+2024,5,Caatinga,4008
+2024,5,Cerrado,73039
+2024,5,Mata Atlântica,16896
+2024,5,Pampa,125
+2024,5,Pantanal,13596
+2024,6,Amazônia,93809
+2024,6,Caatinga,7370
+2024,6,Cerrado,131750
+2024,6,Mata Atlântica,24193
+2024,6,Pampa,394
+2024,6,Pantanal,95527
+2024,7,Amazônia,299250
+2024,7,Caatinga,10713
+2024,7,Cerrado,135106
+2024,7,Mata Atlântica,24005
+2024,7,Pampa,983
+2024,7,Pantanal,34115
+2024,8,Amazônia,1332773
+2024,8,Caatinga,30896
+2024,8,Cerrado,601410
+2024,8,Mata Atlântica,122406
+2024,8,Pampa,1507
+2024,8,Pantanal,174195
+2024,9,Amazônia,1375272
+2024,9,Caatinga,64236
+2024,9,Cerrado,900602
+2024,9,Mata Atlântica,135792
+2024,9,Pampa,835
+2024,9,Pantanal,91421
+2024,10,Amazônia,467852
+2024,10,Caatinga,89906
+2024,10,Cerrado,280964
+2024,10,Mata Atlântica,46999
+2024,10,Pampa,475
+2024,10,Pantanal,121501
+2024,11,Amazônia,418011
+2024,11,Caatinga,65786
+2024,11,Cerrado,75542
+2024,11,Mata Atlântica,14999
+2024,11,Pampa,504
+2024,11,Pantanal,13420
+2024,12,Amazônia,117894
+2024,12,Caatinga,59722
+2024,12,Cerrado,42447
+2024,12,Mata Atlântica,13013
+2024,12,Pampa,418
+2024,12,Pantanal,642
+2025,1,Amazônia,24237
+2025,1,Caatinga,14275
+2025,1,Cerrado,10858
+2025,1,Mata Atlântica,11347
+2025,1,Pampa,1779
+2025,1,Pantanal,943
+2025,2,Amazônia,2450
+2025,2,Caatinga,3188
+2025,2,Cerrado,4227
+2025,2,Mata Atlântica,3902
+2025,2,Pampa,803
+2025,2,Pantanal,91
